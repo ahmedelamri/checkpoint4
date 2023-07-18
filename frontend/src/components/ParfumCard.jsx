@@ -20,9 +20,15 @@ export default function ParfumCard() {
       <div className="box-cards">
         {parfums.map((parfum) => (
           <figure className="cards" key={parfum.id}>
-            <img src={parfum.imagee} alt={parfum.nom} />
+            <div className="image-wrapper">
+              <img src={parfum.imagee} alt={parfum.nom} />
+              <div className="overlay">
+                <button className="overlay-button">Ajouter au panier</button>
+              </div>
+            </div>
             <figcaption>{parfum.nom}</figcaption>
             <p>{parfum.marque}</p>
+            <p className="p2">Eau de parfum</p>
             <p className="prix">Prix : {parfum.prix} Euros </p>
           </figure>
         ))}
