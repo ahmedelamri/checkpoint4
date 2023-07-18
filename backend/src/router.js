@@ -10,4 +10,12 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+const parfumControllers = require("./controllers/parfumControllers");
+
+router.get("/parfums", parfumControllers.browse);
+router.get("/parfums/:id", parfumControllers.read);
+router.put("/parfums/:id", parfumControllers.edit);
+router.post("/parfums", parfumControllers.add);
+router.delete("/parfums/:id", parfumControllers.destroy);
+
 module.exports = router;

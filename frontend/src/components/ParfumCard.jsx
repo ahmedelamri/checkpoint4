@@ -1,40 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function ParfumCard() {
-  const parfums = [
-    {
-      id: 1,
-      nom: "Parfum 1",
-      prix: 50,
-      marque: "Marque 1",
-      image: "chemin/vers/image1.jpg",
-    },
-    {
-      id: 2,
-      nom: "Parfum 2",
-      prix: 70,
-      marque: "Marque 2",
-      image: "chemin/vers/image2.jpg",
-    },
-    {
-      id: 3,
-      nom: "Parfum 3",
-      prix: 90,
-      marque: "Marque 3",
-      image: "chemin/vers/image3.jpg",
-    },
-  ];
+  const [parfums, setParfums] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"}/parfums`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setParfums(data).catch((error) => {
+          console.error("Error fetching  data:", error);
+        });
+      });
+  }, []);
+
   return (
-    <section>
-      <div>
+    <section className="body-card">
+      <div className="box-cards">
         {parfums.map((parfum) => (
-          <div key={parfum.id}>
-            <img src={parfum.image} alt={parfum.nom} />
-            <h2>{parfum.nom}</h2>
+          <figure className="cards" key={parfum.id}>
+            <img src={parfum.imagee} alt={parfum.nom} />
+            <figcaption>{parfum.nom}</figcaption>
             <p>{parfum.marque}</p>
-            <p>{parfum.info}</p>
-            <p>Prix : {parfum.prix}</p>
-          </div>
+            <p className="prix">Prix : {parfum.prix} Euros </p>
+          </figure>
         ))}
       </div>
     </section>

@@ -32,3 +32,86 @@ body {
   width: 30px;
   margin-right: 1rem;
 }
+
+.no-link-style {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* composant parfumcard */
+
+.parfum-card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.parfum-card img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.parfum-card h2 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.parfum-card p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.parfum-card:hover img {
+  opacity: 0.8;
+}
+
+/* MON H1 de HOME  */
+
+@font-face {
+  font-family: "URW Chancery L, cursive";
+  src: url("../font/luca_pacioli_rough.ttf") format("truetype");
+}
+
+.titlehome {
+  text-align: center;
+  font-family: Arial;
+  font-family: "URW Chancery L", cursive;
+  padding: 2rem;
+}
+
+/* LES CARDS de parfums  */
+
+.box-cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cards img {
+  width: auto;
+  height: 350px;
+}
+.cards figcaption {
+  text-align: center;
+  font-size: x-large;
+}
+
+.cards p {
+  text-align: center;
+  font-size: medium;
+}
+.prix {
+  color: black;
+
+  font-size: medium;
+  background: #ffd65b;
+
+  margin: 2rem;
+}
+.body-card {
+  height: auto;
+  width: auto;
+}
