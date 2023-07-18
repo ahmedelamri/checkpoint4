@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+}
+
+/* NAVBAR  */
+
+.Nav1 {
+  justify-content: space-between;
+  background-color: #f2d78a;
+  color: #623d29;
+  display: flex;
+  align-items: center;
+}
+
+.Nav1 img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+.nav_liens {
+  display: flex;
+  justify-content: end;
+  list-style-type: none;
+  margin-right: 2rem;
+  font-size: larger;
+  position: relative;
+}
+
+.nav_liens img {
+  height: 30px;
+  width: 30px;
+  margin-right: 1rem;
+}
