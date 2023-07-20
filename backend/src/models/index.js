@@ -39,6 +39,16 @@ const ParfumManager = require("./ParfumManager");
 models.parfum = new ParfumManager();
 models.parfum.setDatabase(pool);
 
+const PanierManager = require("./PanierManager");
+
+models.panier = new PanierManager();
+models.panier.setDatabase(pool);
+
+const UsersManager = require("./UsersManager");
+
+models.users = new UsersManager();
+models.users.setDatabase(pool);
+
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 

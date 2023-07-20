@@ -1,0 +1,8 @@
+POST http://localhost:7851/parfums
+Content-Type: text/html; charset=utf-8
+
+
+{
+    "prix_total": 645,
+    "user_id": ""
+}

@@ -81,6 +81,7 @@ body {
   font-family: Arial;
   font-family: "URW Chancery L", cursive;
   padding: 2rem;
+  font-size: 30px;
 }
 
 /* LES CARDS de parfums  */
@@ -111,7 +112,7 @@ body {
 .prix {
   color: black;
   font-size: medium;
-  background: #ffd65b;
+  background: #f2d78a;
 
   margin: 2rem;
 }
@@ -141,7 +142,7 @@ body {
 }
 
 .overlay-button {
-  background-color: #ffd65b;
+  background-color: #f2d78a;
   padding: 10px 20px;
   color: black;
   border: none;
@@ -152,4 +153,46 @@ body {
 
 .cards:hover .overlay {
   opacity: 1;
+}
+
+/* Bouton ajouter au panier  */
+
+.ajouter_panier {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4b180f;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  text-align: center;
+}
+
+.ajouter_panier:hover {
+  background-color: #f2d78a;
+  color: #4b180f;
+}
+
+/* tableau de panier  */
+
+.tableau-panier {
+  border-collapse: collapse;
+  background-color: #f2d78a;
+  color: #623d29;
+  text-align: center;
+  margin: auto auto;
+}
+.tableau-panier th,
+td {
+  border: 2px solid black;
+  padding: 35px;
+}
+
+.section_bouton_add {
+  text-align: center;
 }

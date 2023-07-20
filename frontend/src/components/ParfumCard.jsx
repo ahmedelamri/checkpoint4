@@ -1,38 +1,29 @@
-import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
-export default function ParfumCard() {
-  const [parfums, setParfums] = useState([]);
-
-  useEffect(() => {
-    fetch(
-      `${import.meta.env.VITE_BACKEND_URL ?? "http://localhost:5000"}/parfums`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setParfums(data).catch((error) => {
-          console.error("Error fetching  data:", error);
-        });
-      });
-  }, []);
-
+export default function ParfumCard({ parfum }) {
   return (
-    <section className="body-card">
-      <div className="box-cards">
-        {parfums.map((parfum) => (
-          <figure className="cards" key={parfum.id}>
-            <div className="image-wrapper">
-              <img src={parfum.imagee} alt={parfum.nom} />
-              <div className="overlay">
-                <button className="overlay-button">Ajouter au panier</button>
-              </div>
-            </div>
-            <figcaption>{parfum.nom}</figcaption>
-            <p>{parfum.marque}</p>
-            <p className="p2">Eau de parfum</p>
-            <p className="prix">Prix : {parfum.prix} Euros </p>
-          </figure>
-        ))}
+    <figure className="cards">
+      <div className="image-wrapper">
+        <img src={parfum.image} alt={parfum.nom} />
+        <div className="overlay">
+          <button type="button" className="overlay-button">
+            Description
+          </button>
+        </div>
       </div>
-    </section>
+      <figcaption>{parfum.nom}</figcaption>
+      <p>{parfum.marque}</p>
+      <p className="p2">Eau de parfum</p>
+      <p className="prix">Prix : {parfum.prix} Euros </p>
+    </figure>
   );
 }
+
+ParfumCard.propTypes = {
+  parfum: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    nom: PropTypes.string.isRequired,
+    marque: PropTypes.string.isRequired,
+    prix: PropTypes.number.isRequired,
+  }).isRequired,
+};
