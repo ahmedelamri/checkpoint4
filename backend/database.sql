@@ -6,14 +6,14 @@
 -- INSERT INTO item (title) VALUES ('Stuff'), ('Doodads');
 
 CREATE TABLE users (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   email VARCHAR(255) NOT NULL
 );
 INSERT INTO users (email) VALUES ('fred@hotmail.fr');
 
 
 CREATE TABLE parfum (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   nom VARCHAR(255) NOT NULL,
   prix DECIMAL(10, 2) NOT NULL,
   marque VARCHAR(255) NOT NULL,
@@ -28,18 +28,16 @@ INSERT INTO parfum (nom, prix, marque, image, stock) VALUES
 
 
 CREATE TABLE panier (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  prix_total DECIMAL(10, 2) NOT NULL,
-  user_id INT,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT
 );
 
 
 
 CREATE TABLE panier_parfum (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  parfum_id INT,
-  panier_id INT,
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  parfum_id INT UNSIGNED not null,
+  panier_id INT UNSIGNED not null,
+  quantity INT UNSIGNED not null,
   FOREIGN KEY (parfum_id) REFERENCES parfum(id),
   FOREIGN KEY (panier_id) REFERENCES panier(id)
 );

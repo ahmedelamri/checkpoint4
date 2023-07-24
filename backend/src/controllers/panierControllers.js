@@ -53,10 +53,8 @@ const edit = (req, res) => {
 const add = (req, res) => {
   const panier = req.body;
 
-  // TODO validations (length, format...)
-
   models.panier
-    .insert(panier)
+    .save(panier)
     .then(([result]) => {
       res.location(`/paniers/${result.insertId}`).sendStatus(201);
     })

@@ -4,43 +4,42 @@ import React from "react";
 
 export default function Panier({ panier, deleteFromCart }) {
   return (
-    <div>
-      {panier.map((parfumm) => (
-        <table className="tableau-panier" key={parfumm.id}>
-          <caption>Mon panier</caption>
-          <thead>
-            <tr>
-              <th>Information</th>
-              <th>Prix unitaire</th>
-              <th>Quantité</th>
-              <th>Prix total</th>
+    <div className="back">
+      <table className="tableau-panier">
+        <caption className="titletab">Mon panier</caption>
+        <thead>
+          <tr>
+            <th>Information</th>
+            <th>Prix unitaire</th>
+            <th>Quantité</th>
+            <th>Prix total</th>
+            <th> # </th>
+          </tr>
+        </thead>
+        <tbody>
+          {panier.map((parfum) => (
+            <tr key={parfum.id}>
+              <td className="td-tab">
+                <ParfumCard parfum={parfum} />
+              </td>
+              <td className="td-tab">{parfum.prix}</td>
+              <td className="td-tab">{parfum.stock}</td>
+              <td className="td-tab">{parfum.prix * parfum.stock}</td>
+              <td className="td-tab">
+                <button
+                  className="ajouter_panier"
+                  type="button"
+                  onClick={() => {
+                    deleteFromCart(parfum);
+                  }}
+                >
+                  Retirer du panier
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {panier.map((parfum) => (
-              <tr key={parfum.id}>
-                <td>
-                  <ParfumCard parfum={parfum} />
-                </td>
-                <td>{parfum.prix}</td>
-                <td>{parfum.stock}</td>
-                <td>{parfum.prix * parfum.stock}</td>
-                <td>
-                  <button
-                    className="ajouter_panier"
-                    type="button"
-                    onClick={() => {
-                      deleteFromCart(parfum);
-                    }}
-                  >
-                    Retirer du panier
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ))}
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

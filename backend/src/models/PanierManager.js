@@ -5,25 +5,31 @@ class PanierManager extends AbstractManager {
     super({ table: "panier" });
   }
 
-  insert(panier) {
-    return this.database.query(`insert into ${this.table} (title) values (?)`, [
-      panier.title,
-    ]);
-  }
-
-  save(panier) {
+  findAll() {
     return this.database.query(
-      `insert into panier_parfum (panier_id, parfum_id) values ${panier.parfums
-        .map(() => "(?, ?)")
-        .join(",")}`,
-      panier.parfums.map((parfum) => [panier.id, parfum.id]).flat()
+      `select
+        panier.*,
+        JSON_ARRAYAGG(
+          JSON_OBJECT("parfum_id", panier_parfum.parfum_id, "quantity", panier_parfum.quantity)
+        ) as parfums,
+        SUM(panier_parfum.quantity * parfum.prix) as prix_total
+        from  ${this.table}
+        join panier_parfum on panier.id = panier_parfum.panier_id
+        join parfum on panier_parfum.parfum_id = parfum.id
+        group by panier.id`
     );
   }
 
-  update(panier) {
+  async save(panier) {
+    const [result] = await this.database.query(
+      `insert into ${this.table} () values ()`
+    );
+
     return this.database.query(
-      `update ${this.table} set title = ? where id = ?`,
-      [panier.title, panier.id]
+      `insert into panier_parfum (panier_id, parfum_id, quantity) values ${panier
+        .map(() => "(?, ?, ?)")
+        .join(",")}`,
+      panier.map((parfum) => [result.insertId, parfum.id, parfum.stock]).flat()
     );
   }
 }

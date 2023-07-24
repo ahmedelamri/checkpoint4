@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function ParfumCard({ parfum }) {
   return (
@@ -6,9 +7,11 @@ export default function ParfumCard({ parfum }) {
       <div className="image-wrapper">
         <img src={parfum.image} alt={parfum.nom} />
         <div className="overlay">
-          <button type="button" className="overlay-button">
-            Description
-          </button>
+          <Link to={`/description/${parfum.id}`}>
+            <button type="button" className="overlay-button">
+              Description
+            </button>
+          </Link>
         </div>
       </div>
       <figcaption>{parfum.nom}</figcaption>
@@ -22,6 +25,7 @@ export default function ParfumCard({ parfum }) {
 ParfumCard.propTypes = {
   parfum: PropTypes.shape({
     image: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     nom: PropTypes.string.isRequired,
     marque: PropTypes.string.isRequired,
     prix: PropTypes.number.isRequired,

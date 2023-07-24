@@ -179,20 +179,51 @@ body {
 }
 
 /* tableau de panier  */
-
+.back {
+  background-image: url(../src/photos/fond2.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .tableau-panier {
   border-collapse: collapse;
   background-color: #f2d78a;
-  color: #623d29;
+  color: black;
   text-align: center;
   margin: auto auto;
 }
-.tableau-panier th,
-td {
-  border: 2px solid black;
-  padding: 35px;
+.tableau-panier ul {
+  list-style-type: none;
+  text-align: center;
+}
+.tableau-panier td {
+  height: 100px;
+  border: 3px solid black;
+  font-size: 20px;
+  background-color: aliceblue;
+}
+.tableau-panier th {
+  border: 3px solid black;
+  height: 50px;
+  padding: 0.5rem;
 }
 
 .section_bouton_add {
   text-align: center;
+}
+
+.td-tab {
+  max-height: 100px;
+}
+
+.titletab {
+  text-align: center;
+  font-family: Arial;
+  font-family: "URW Chancery L", cursive;
+  padding: 2rem;
+  font-size: 50px;
+  color: #f2d78a;
+}
+.tdprix {
+  color: green;
 }
